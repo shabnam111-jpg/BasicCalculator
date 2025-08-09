@@ -2,10 +2,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #e0f7fa; /* Soft cyan background */
     margin: 0;
+    padding: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 
 .calculator {
@@ -13,7 +15,9 @@ body {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    width: 320px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 280px;
     border: 2px solid #b0bec5; /* Outline for calculator box */
 }
 
@@ -38,7 +42,7 @@ body {
 }
 
 button {
-    padding: 15px;
+    padding: 20px;
     border: none;
     border-radius: 12px;
     background-color: #d0d0d0;
@@ -46,6 +50,8 @@ button {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 44px; /* Minimum touch target size */
+    touch-action: manipulation; /* Improves touch responsiveness */
 }
 
 button:hover {
@@ -91,4 +97,87 @@ button:hover {
 
 .dark button:hover {
     background-color: #455a64;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .calculator {
+        padding: 15px;
+        max-width: 95vw;
+    }
+    
+    #display {
+        height: 50px;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .buttons {
+        gap: 8px;
+    }
+    
+    button {
+        padding: 18px 10px;
+        font-size: 16px;
+        min-height: 50px;
+    }
+    
+    #themeToggle {
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+    .calculator {
+        padding: 10px;
+    }
+    
+    #display {
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    button {
+        padding: 15px 8px;
+        font-size: 14px;
+        min-height: 45px;
+    }
+    
+    .buttons {
+        gap: 6px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        min-height: auto;
+        padding: 5px 10px;
+    }
+    
+    .calculator {
+        max-width: 90vw;
+    }
+    
+    #display {
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    button {
+        padding: 12px;
+        min-height: 40px;
+    }
+    
+    #themeToggle {
+        margin-top: 8px;
+        padding: 10px;
+    }
 }
